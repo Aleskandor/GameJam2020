@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     private bool rocketBoost;
     private bool rocketLeg;
     private bool torso;
+    private bool upBoost;
 
     private float airSpeed;
     private float distanceToGround;
@@ -17,10 +18,10 @@ public class PlayerMovement : MonoBehaviour
     private float horizontalInput;
     private float jumpForce;
     private float movementSpeed;
+    private float originalUpForce;
     private float headSpeed;
     private float legSpeed;
-    private float rocketCharge;
-    private float maxRocketCharge;
+    private float upForce;
 
     public GameObject stage1;
     public GameObject stage2;
@@ -40,16 +41,17 @@ public class PlayerMovement : MonoBehaviour
         rocketBoost = false;
         rocketLeg = false;
         torso = false;
+        upBoost = false;
 
-        airSpeed = 4f;
+        airSpeed = 5f;
         distanceToGround = GetComponentInChildren<Collider>().bounds.extents.y;
-        downForce = 0.1f;
-        jumpForce = 10f;
+        downForce = 0.5f;
+        jumpForce = 5f;
         headSpeed = 7.5f;
         movementSpeed = headSpeed;
+        originalUpForce = 0.3f;
         legSpeed = 10f;
-        rocketCharge = 1f;
-        maxRocketCharge = 10f;
+        upForce = 0.3f;
 
         rigidbody = GetComponent<Rigidbody>();
 
@@ -67,13 +69,21 @@ public class PlayerMovement : MonoBehaviour
 
         Movement();
 
-        if (CheckIfGrounded() && Input.GetKey(KeyCode.Space) && normalLeg)
-        {
-            if (rocketCharge < maxRocketCharge)
-                rocketCharge += 100 * Time.deltaTime;
-        }
-        else if (Input.GetKeyUp(KeyCode.Space) && CheckIfGrounded() && normalLeg)
+        if (CheckIfGrounded() && Input.GetKeyDown(KeyCode.Space) && normalLeg)
             Jump();
+        if (Input.GetKey(KeyCode.Space) && !CheckIfGrounded() && normalLeg && upBoost)
+        {
+            rigidbody.AddForce(Vector3.up * upForce * 1.7f, ForceMode.Impulse);
+            upForce -= Time.deltaTime * 5f;
+
+            if (upForce <= 0)
+            {
+                upForce = originalUpForce;
+                upBoost = false;
+            }
+        }
+        else if (!Input.GetKey(KeyCode.Space) && !CheckIfGrounded() && normalLeg)
+            rigidbody.AddForce(Vector3.down * downForce, ForceMode.Impulse);
         else if (Input.GetKeyDown(KeyCode.Space) && rocketLeg && rocketBoost && !CheckIfGrounded())
             DoubleJump();
     }
@@ -91,6 +101,12 @@ public class PlayerMovement : MonoBehaviour
             {
                 stage2.GetComponentInChildren<Animator>().SetBool("Jump", false);
                 stage2.GetComponentInChildren<Animator>().SetBool("Land", true);
+            }
+
+            if (stage3.activeSelf && rigidbody.velocity.y < 0)
+            {
+                stage3.GetComponentInChildren<Animator>().SetBool("Jump", false);
+                stage3.GetComponentInChildren<Animator>().SetBool("Land", true);
             }
 
             if (stage5.activeSelf)
@@ -132,11 +148,26 @@ public class PlayerMovement : MonoBehaviour
 
         }
         else if (stage2.activeSelf)
-        {
             stage2.GetComponentInChildren<Animator>().SetBool("Walk", false);
-            Quaternion targetRot = Quaternion.Euler(0, 180, 0);
-            stage2.transform.rotation = Quaternion.RotateTowards(stage2.transform.rotation, targetRot, 10f);
+
+        if (stage3.activeSelf && horizontalInput != 0)
+        {
+            stage3.GetComponentInChildren<Animator>().SetBool("Walk", true);
+
+            if (horizontalInput < 0)
+            {
+                Quaternion targetRot = Quaternion.Euler(0, -90, 0);
+                stage3.transform.rotation = Quaternion.RotateTowards(stage3.transform.rotation, targetRot, 10f);
+            }
+            else if (horizontalInput > 0)
+            {
+                Quaternion targetRot = Quaternion.Euler(0, 90, 0);
+                stage3.transform.rotation = Quaternion.RotateTowards(stage3.transform.rotation, targetRot, 10f);
+            }
+
         }
+        else if (stage3.activeSelf)
+            stage3.GetComponentInChildren<Animator>().SetBool("Walk", false);
 
         transform.Translate(Vector3.right * horizontalInput * movementSpeed * Time.deltaTime);
     }
@@ -149,10 +180,16 @@ public class PlayerMovement : MonoBehaviour
             stage2.GetComponentInChildren<Animator>().SetBool("Jump", true);
         }
 
+        if (stage3.activeSelf)
+        {
+            stage3.GetComponentInChildren<Animator>().SetBool("Land", false);
+            stage3.GetComponentInChildren<Animator>().SetBool("Jump", true);
+        }
+
         grounded = false;
-        rigidbody.AddForce(Vector3.right * horizontalInput * jumpForce / 2, ForceMode.Impulse);
-        rigidbody.AddForce(Vector3.up * (jumpForce + rocketCharge), ForceMode.Impulse);
-        rocketCharge = 1f;
+        upBoost = true;
+        rigidbody.AddForce(Vector3.right * horizontalInput * jumpForce, ForceMode.Impulse);
+        rigidbody.AddForce(Vector3.up * jumpForce * 2.5f, ForceMode.Impulse);
     }
 
     private void DoubleJump()
