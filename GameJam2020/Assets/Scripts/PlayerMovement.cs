@@ -16,6 +16,8 @@ public class PlayerMovement : MonoBehaviour
     private float movementSpeed;
     private float headSpeed;
     private float legSpeed;
+    private float rocketCharge;
+    private float maxRocketCharge;
 
     public GameObject stage1;
     public GameObject stage2;
@@ -38,6 +40,8 @@ public class PlayerMovement : MonoBehaviour
         headSpeed = 1f;
         movementSpeed = headSpeed;
         legSpeed = 2f;
+        rocketCharge = 1f;
+        maxRocketCharge = 10f;
 
         playerRigidbody = GetComponent<Rigidbody>();
     }
@@ -48,10 +52,15 @@ public class PlayerMovement : MonoBehaviour
 
         Movement();
 
-        if (Input.GetKeyDown(KeyCode.Space) && CheckIfGrounded())
+        if (Input.GetKey(KeyCode.Space) && CheckIfGrounded() && rocketLeg)
         {
-            Jump();
+            if (rocketCharge < maxRocketCharge)
+                rocketCharge += 1 * Time.deltaTime;
         }
+        else if (Input.GetKeyDown(KeyCode.Space) && CheckIfGrounded() && normalLeg && !rocketLeg)
+                Jump();
+        else if (Input.GetKeyUp(KeyCode.Space) && CheckIfGrounded() && rocketLeg)
+                RocketJump();
     }
 
     private bool CheckIfGrounded()
@@ -64,16 +73,37 @@ public class PlayerMovement : MonoBehaviour
 
     private void Movement()
     {
+        UpdateAnimationController();
+
+        //Actual movement in horizontal direction.
         transform.Translate(Vector3.right * horizontalInput * movementSpeed * Time.deltaTime);
     }
 
     private void Jump()
     {
-        if (normalLeg)
-        {
-            grounded = false;
-            playerRigidbody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-        }
+        grounded = false;
+        playerRigidbody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+    }
+
+    private void RocketJump()
+    {
+        grounded = false;
+        playerRigidbody.AddForce(Vector3.up * (jumpForce + rocketCharge), ForceMode.Impulse);
+        rocketCharge = 1f;
+    }
+
+    //Used to update the animators for the different stages of the character model.
+    private void UpdateAnimationController()
+    {
+        if (Input.GetKey(KeyCode.D) && stage1.activeSelf)
+            stage1.GetComponentInChildren<Animator>().SetBool("MovingRight", true);
+        else if (stage1.activeSelf)
+            stage1.GetComponentInChildren<Animator>().SetBool("MovingRight", false);
+
+        if (Input.GetKey(KeyCode.A) && stage1.activeSelf)
+            stage1.GetComponentInChildren<Animator>().SetBool("MovingLeft", true);
+        else if (stage1.activeSelf)
+            stage1.GetComponentInChildren<Animator>().SetBool("MovingLeft", false);
     }
 
     private void OnCollisionEnter(Collision collision)

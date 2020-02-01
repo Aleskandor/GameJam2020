@@ -814,7 +814,6 @@ GameObject:
   m_Component:
   - component: {fileID: 433207667}
   - component: {fileID: 433207668}
-  - component: {fileID: 433207669}
   m_Layer: 0
   m_Name: Stage1
   m_TagString: Untagged
@@ -850,25 +849,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!95 &433207669
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 433207666}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!4 &480204942 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: a31995affd7072c48976865554005086,
@@ -1443,11 +1423,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1143607620}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: a31995affd7072c48976865554005086,
-        type: 3}
-      propertyPath: m_Name
-      value: RobotHead
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: a31995affd7072c48976865554005086,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1502,6 +1477,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: a31995affd7072c48976865554005086,
+        type: 3}
+      propertyPath: m_Name
+      value: RobotHead
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a31995affd7072c48976865554005086, type: 3}
@@ -1924,11 +1904,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 724656459}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: a31995affd7072c48976865554005086,
-        type: 3}
-      propertyPath: m_Name
-      value: RobotHead
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: a31995affd7072c48976865554005086,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1983,6 +1958,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: a31995affd7072c48976865554005086,
+        type: 3}
+      propertyPath: m_Name
+      value: RobotHead
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a31995affd7072c48976865554005086, type: 3}
@@ -2132,11 +2112,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 737132406}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: a31995affd7072c48976865554005086,
-        type: 3}
-      propertyPath: m_Name
-      value: RobotHead
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: a31995affd7072c48976865554005086,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2191,6 +2166,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: a31995affd7072c48976865554005086,
+        type: 3}
+      propertyPath: m_Name
+      value: RobotHead
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a31995affd7072c48976865554005086, type: 3}
@@ -2432,6 +2412,31 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1804530993}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1848298604 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: a31995affd7072c48976865554005086,
+    type: 3}
+  m_PrefabInstance: {fileID: 2070330115}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1848298605
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1848298604}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f056fe2789d7256428c844fd4cf9e488, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &1893392852
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2439,11 +2444,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1668157308}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: a31995affd7072c48976865554005086,
-        type: 3}
-      propertyPath: m_Name
-      value: RobotHead
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: a31995affd7072c48976865554005086,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2498,6 +2498,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: a31995affd7072c48976865554005086,
+        type: 3}
+      propertyPath: m_Name
+      value: RobotHead
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a31995affd7072c48976865554005086, type: 3}
@@ -2760,11 +2765,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 433207667}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: a31995affd7072c48976865554005086,
-        type: 3}
-      propertyPath: m_Name
-      value: RobotHead
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: a31995affd7072c48976865554005086,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2819,6 +2819,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: a31995affd7072c48976865554005086,
+        type: 3}
+      propertyPath: m_Name
+      value: RobotHead
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a31995affd7072c48976865554005086, type: 3}
