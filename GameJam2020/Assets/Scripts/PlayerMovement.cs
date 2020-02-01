@@ -28,8 +28,6 @@ public class PlayerMovement : MonoBehaviour
 
     private Rigidbody playerRigidbody;
 
-    private Vector3 savePos;
-
     void Start()
     {
         normalLeg = false;
@@ -48,7 +46,6 @@ public class PlayerMovement : MonoBehaviour
         maxRocketCharge = 10f;
 
         playerRigidbody = GetComponent<Rigidbody>();
-        savePos = transform.position;
     }
 
     void Update()
@@ -66,12 +63,6 @@ public class PlayerMovement : MonoBehaviour
                 Jump();
         else if (Input.GetKeyUp(KeyCode.Space) && CheckIfGrounded() && rocketLeg)
                 RocketJump();
-
-
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            ReSpawn();
-        }
     }
 
     private bool CheckIfGrounded()
@@ -97,8 +88,6 @@ public class PlayerMovement : MonoBehaviour
             return false;
         }
     }
-
-    
 
     private void Movement()
     {
@@ -127,13 +116,7 @@ public class PlayerMovement : MonoBehaviour
         rocketCharge = 1f;
     }
 
-    private void ReSpawn()
-    {
-        transform.position = savePos;
-        playerRigidbody.velocity = Vector3.zero;
-    }
-    //Used to update the animators for the different stages of the character model.
-    private void UpdateAnimationController()
+    private void UpdateHeadMoveAnimationController()
     {
         if (Input.GetKey(KeyCode.D) && stage1.activeSelf)
             stage1.GetComponentInChildren<Animator>().SetBool("MovingRight", true);
@@ -180,12 +163,6 @@ public class PlayerMovement : MonoBehaviour
             stage5.SetActive(true);
             rocketLeg = true;
             distanceToGround = GetComponentInChildren<Collider>().bounds.extents.y;
-        }
-
-        else if (collision.gameObject.CompareTag("CheckPoint"))
-        {
-            savePos = transform.position;
-            Destroy(collision.gameObject);
         }
     }
 }
