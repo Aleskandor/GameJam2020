@@ -106,6 +106,7 @@ public class PlayerMovement : MonoBehaviour
     private void ReSpawn()
     {
         transform.position = savePos;
+        playerRigidbody.velocity = Vector3.zero;
     }
     //Used to update the animators for the different stages of the character model.
     private void UpdateAnimationController()

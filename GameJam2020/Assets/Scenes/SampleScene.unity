@@ -1423,11 +1423,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1143607620}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: a31995affd7072c48976865554005086,
-        type: 3}
-      propertyPath: m_Name
-      value: RobotHead
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: a31995affd7072c48976865554005086,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1482,6 +1477,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: a31995affd7072c48976865554005086,
+        type: 3}
+      propertyPath: m_Name
+      value: RobotHead
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a31995affd7072c48976865554005086, type: 3}
@@ -1904,11 +1904,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 724656459}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: a31995affd7072c48976865554005086,
-        type: 3}
-      propertyPath: m_Name
-      value: RobotHead
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: a31995affd7072c48976865554005086,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1963,6 +1958,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: a31995affd7072c48976865554005086,
+        type: 3}
+      propertyPath: m_Name
+      value: RobotHead
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a31995affd7072c48976865554005086, type: 3}
@@ -2112,11 +2112,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 737132406}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: a31995affd7072c48976865554005086,
-        type: 3}
-      propertyPath: m_Name
-      value: RobotHead
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: a31995affd7072c48976865554005086,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2171,6 +2166,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: a31995affd7072c48976865554005086,
+        type: 3}
+      propertyPath: m_Name
+      value: RobotHead
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a31995affd7072c48976865554005086, type: 3}
@@ -2444,11 +2444,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1668157308}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: a31995affd7072c48976865554005086,
-        type: 3}
-      propertyPath: m_Name
-      value: RobotHead
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: a31995affd7072c48976865554005086,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2503,6 +2498,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: a31995affd7072c48976865554005086,
+        type: 3}
+      propertyPath: m_Name
+      value: RobotHead
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a31995affd7072c48976865554005086, type: 3}
@@ -2765,11 +2765,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 433207667}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: a31995affd7072c48976865554005086,
-        type: 3}
-      propertyPath: m_Name
-      value: RobotHead
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: a31995affd7072c48976865554005086,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2824,6 +2819,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: a31995affd7072c48976865554005086,
+        type: 3}
+      propertyPath: m_Name
+      value: RobotHead
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a31995affd7072c48976865554005086, type: 3}
@@ -2900,10 +2900,5 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8805589139370991135, guid: b38b252f2d2c2514a8b1dde0586fb62a,
-        type: 3}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 245508774}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b38b252f2d2c2514a8b1dde0586fb62a, type: 3}

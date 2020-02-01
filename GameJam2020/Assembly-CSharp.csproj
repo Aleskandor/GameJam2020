@@ -62,7 +62,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\CheckPointScript.cs" />
     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
     <Reference Include="Unity.XR.Management">
       <HintPath>C:/Users/Jack/Documents/GitHub/GameJam2020/GameJam2020/Library/ScriptAssemblies/Unity.XR.Management.dll</HintPath>
