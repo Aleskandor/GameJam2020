@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     private bool rocketLeg;
     private bool grounded;
 
+    private float airSpeed;
     private float distanceToGround;
     private float horizontalInput;
     private float jumpForce;
@@ -35,6 +36,7 @@ public class PlayerMovement : MonoBehaviour
         rocketLeg = false;
         grounded = true;
 
+        airSpeed = 0.5f;
         distanceToGround = GetComponentInChildren<Collider>().bounds.extents.y;
         jumpForce = 10f;
         headSpeed = 1f;
@@ -48,11 +50,11 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        horizontalInput = Input.GetAxis("Horizontal");
+        horizontalInput = Input.GetAxisRaw("Horizontal");
 
         Movement();
 
-        if (Input.GetKey(KeyCode.Space) && CheckIfGrounded() && rocketLeg)
+        if (CheckIfGrounded() && Input.GetKey(KeyCode.Space) && rocketLeg)
         {
             if (rocketCharge < maxRocketCharge)
                 rocketCharge += 1 * Time.deltaTime;
@@ -66,21 +68,43 @@ public class PlayerMovement : MonoBehaviour
     private bool CheckIfGrounded()
     {
         if (Physics.Raycast(transform.position, Vector3.down, distanceToGround + 0.1f))
+        {
+            if (stage2.activeSelf)
+            {
+                stage2.GetComponentInChildren<Animator>().SetBool("Jump", false);
+                stage2.GetComponentInChildren<Animator>().SetBool("Land", true);
+            }
+
+            if (stage1.activeSelf)
+                movementSpeed = headSpeed;
+            else
+                movementSpeed = legSpeed;
+
             return true;
+        }
         else
+        {
+            movementSpeed = airSpeed;
             return false;
+        }
     }
 
     private void Movement()
     {
-        UpdateAnimationController();
+        if (stage1.activeSelf)
+            UpdateHeadMoveAnimationController();
 
-        //Actual movement in horizontal direction.
         transform.Translate(Vector3.right * horizontalInput * movementSpeed * Time.deltaTime);
     }
 
     private void Jump()
     {
+        if (stage2.activeSelf)
+        {
+            stage2.GetComponentInChildren<Animator>().SetBool("Land", false);
+            stage2.GetComponentInChildren<Animator>().SetBool("Jump", true);
+        }
+
         grounded = false;
         playerRigidbody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
     }
@@ -92,8 +116,7 @@ public class PlayerMovement : MonoBehaviour
         rocketCharge = 1f;
     }
 
-    //Used to update the animators for the different stages of the character model.
-    private void UpdateAnimationController()
+    private void UpdateHeadMoveAnimationController()
     {
         if (Input.GetKey(KeyCode.D) && stage1.activeSelf)
             stage1.GetComponentInChildren<Animator>().SetBool("MovingRight", true);
@@ -115,6 +138,7 @@ public class PlayerMovement : MonoBehaviour
             stage2.SetActive(true);
             normalLeg = true;
             movementSpeed = legSpeed;
+            distanceToGround = GetComponentInChildren<Collider>().bounds.extents.y;
         }
         else if (collision.gameObject.name == "Torso")
         {
@@ -122,6 +146,7 @@ public class PlayerMovement : MonoBehaviour
             stage2.SetActive(false);
             stage3.SetActive(true);
             torso = true;
+            distanceToGround = GetComponentInChildren<Collider>().bounds.extents.y;
         }
         else if (collision.gameObject.name == "Fork")
         {
@@ -129,6 +154,7 @@ public class PlayerMovement : MonoBehaviour
             stage3.SetActive(false);
             stage4.SetActive(true);
             forkArm = true;
+            distanceToGround = GetComponentInChildren<Collider>().bounds.extents.y;
         }
         else if (collision.gameObject.name == "Rocket")
         {
@@ -136,6 +162,7 @@ public class PlayerMovement : MonoBehaviour
             stage4.SetActive(false);
             stage5.SetActive(true);
             rocketLeg = true;
+            distanceToGround = GetComponentInChildren<Collider>().bounds.extents.y;
         }
     }
 }
