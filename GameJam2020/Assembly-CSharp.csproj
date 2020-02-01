@@ -62,6 +62,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\HorizontalMovement.cs" />
     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
     <None Include="Assets\Skybox\Skybox Cubemap Extended.shader" />
     <Reference Include="Unity.XR.Management">

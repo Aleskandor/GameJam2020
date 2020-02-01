@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    private bool normalLeg;
-    private bool torso;
     private bool forkArm;
-    private bool rocketLeg;
     private bool grounded;
+    private bool normalLeg;
+    private bool rocketBoost;
+    private bool rocketLeg;
+    private bool torso;
 
     private float airSpeed;
     private float distanceToGround;
+    private float downForce;
     private float horizontalInput;
     private float jumpForce;
     private float movementSpeed;
@@ -26,64 +28,83 @@ public class PlayerMovement : MonoBehaviour
     public GameObject stage4;
     public GameObject stage5;
 
-    private Rigidbody playerRigidbody;
+    private Rigidbody rigidbody;
+
+    private Vector3 checkPoint;
 
     void Start()
     {
-        normalLeg = false;
-        torso = false;
         forkArm = false;
-        rocketLeg = false;
         grounded = true;
+        normalLeg = false;
+        rocketBoost = false;
+        rocketLeg = false;
+        torso = false;
 
-        airSpeed = 0.5f;
+        airSpeed = 4f;
         distanceToGround = GetComponentInChildren<Collider>().bounds.extents.y;
+        downForce = 0.1f;
         jumpForce = 10f;
-        headSpeed = 1f;
+        headSpeed = 7.5f;
         movementSpeed = headSpeed;
-        legSpeed = 2f;
+        legSpeed = 10f;
         rocketCharge = 1f;
         maxRocketCharge = 10f;
 
-        playerRigidbody = GetComponent<Rigidbody>();
+        rigidbody = GetComponent<Rigidbody>();
+
+        checkPoint = transform.position;
     }
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            Respawn();
+        }
+
         horizontalInput = Input.GetAxisRaw("Horizontal");
 
         Movement();
 
-        if (CheckIfGrounded() && Input.GetKey(KeyCode.Space) && rocketLeg)
+        if (CheckIfGrounded() && Input.GetKey(KeyCode.Space) && normalLeg)
         {
             if (rocketCharge < maxRocketCharge)
-                rocketCharge += 1 * Time.deltaTime;
+                rocketCharge += 100 * Time.deltaTime;
         }
-        else if (Input.GetKeyDown(KeyCode.Space) && CheckIfGrounded() && normalLeg && !rocketLeg)
-                Jump();
-        else if (Input.GetKeyUp(KeyCode.Space) && CheckIfGrounded() && rocketLeg)
-                RocketJump();
+        else if (Input.GetKeyUp(KeyCode.Space) && CheckIfGrounded() && normalLeg)
+            Jump();
+        else if (Input.GetKeyDown(KeyCode.Space) && rocketLeg && rocketBoost && !CheckIfGrounded())
+            DoubleJump();
     }
 
     private bool CheckIfGrounded()
     {
-        if (Physics.Raycast(transform.position, Vector3.down, distanceToGround + 0.1f))
+        if (Physics.Raycast(transform.position, Vector3.down, distanceToGround + 0.01f))
         {
-            if (stage2.activeSelf && playerRigidbody.velocity.y < 0)
-            {
-                stage2.GetComponentInChildren<Animator>().SetBool("Jump", false);
-                stage2.GetComponentInChildren<Animator>().SetBool("Land", true);
-            }
-
             if (stage1.activeSelf)
                 movementSpeed = headSpeed;
             else
                 movementSpeed = legSpeed;
 
+            if (stage2.activeSelf && rigidbody.velocity.y < 0)
+            {
+                stage2.GetComponentInChildren<Animator>().SetBool("Jump", false);
+                stage2.GetComponentInChildren<Animator>().SetBool("Land", true);
+            }
+
+            if (stage5.activeSelf)
+            {
+                rocketBoost = true;
+            }
+
             return true;
         }
         else
         {
+            if (rigidbody.velocity.y < 0)
+                rigidbody.AddForce(Vector3.down * downForce, ForceMode.Impulse);
+
             movementSpeed = airSpeed;
             return false;
         }
@@ -93,6 +114,29 @@ public class PlayerMovement : MonoBehaviour
     {
         if (stage1.activeSelf)
             UpdateHeadMoveAnimationController();
+
+        if (stage2.activeSelf && horizontalInput != 0)
+        {
+            stage2.GetComponentInChildren<Animator>().SetBool("Walk", true);
+
+            if (horizontalInput < 0)
+            {
+                Quaternion targetRot = Quaternion.Euler(0, -90, 0);
+                stage2.transform.rotation = Quaternion.RotateTowards(stage2.transform.rotation, targetRot, 10f);
+            }
+            else if (horizontalInput > 0)
+            {
+                Quaternion targetRot = Quaternion.Euler(0, 90, 0);
+                stage2.transform.rotation = Quaternion.RotateTowards(stage2.transform.rotation, targetRot, 10f);
+            }
+
+        }
+        else if (stage2.activeSelf)
+        {
+            stage2.GetComponentInChildren<Animator>().SetBool("Walk", false);
+            Quaternion targetRot = Quaternion.Euler(0, 180, 0);
+            stage2.transform.rotation = Quaternion.RotateTowards(stage2.transform.rotation, targetRot, 10f);
+        }
 
         transform.Translate(Vector3.right * horizontalInput * movementSpeed * Time.deltaTime);
     }
@@ -106,14 +150,22 @@ public class PlayerMovement : MonoBehaviour
         }
 
         grounded = false;
-        playerRigidbody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        rigidbody.AddForce(Vector3.right * horizontalInput * jumpForce / 2, ForceMode.Impulse);
+        rigidbody.AddForce(Vector3.up * (jumpForce + rocketCharge), ForceMode.Impulse);
+        rocketCharge = 1f;
     }
 
-    private void RocketJump()
+    private void DoubleJump()
     {
-        grounded = false;
-        playerRigidbody.AddForce(Vector3.up * (jumpForce + rocketCharge), ForceMode.Impulse);
-        rocketCharge = 1f;
+        rigidbody.velocity = Vector3.zero;
+        rigidbody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        rocketBoost = false;
+    }
+
+    private void Respawn()
+    {
+        transform.position = checkPoint;
+        rigidbody.velocity = Vector3.zero;
     }
 
     private void UpdateHeadMoveAnimationController()
@@ -133,16 +185,17 @@ public class PlayerMovement : MonoBehaviour
     {
         if (collision.gameObject.name == "Leg")
         {
-            collision.gameObject.SetActive(false);
+            Destroy(collision.gameObject);
             stage1.SetActive(false);
             stage2.SetActive(true);
+            Camera.main.transform.position -= new Vector3(0, 0, 5);
             normalLeg = true;
             movementSpeed = legSpeed;
             distanceToGround = GetComponentInChildren<Collider>().bounds.extents.y;
         }
         else if (collision.gameObject.name == "Torso")
         {
-            collision.gameObject.SetActive(false);
+            Destroy(collision.gameObject);
             stage2.SetActive(false);
             stage3.SetActive(true);
             torso = true;
@@ -150,7 +203,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (collision.gameObject.name == "Fork")
         {
-            collision.gameObject.SetActive(false);
+            Destroy(collision.gameObject);
             stage3.SetActive(false);
             stage4.SetActive(true);
             forkArm = true;
@@ -158,11 +211,17 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (collision.gameObject.name == "Rocket")
         {
-            collision.gameObject.SetActive(false);
+            Destroy(collision.gameObject);
             stage4.SetActive(false);
             stage5.SetActive(true);
             rocketLeg = true;
+            rocketBoost = true;
             distanceToGround = GetComponentInChildren<Collider>().bounds.extents.y;
+        }
+        else if (collision.gameObject.CompareTag("CheckPoint"))
+        {
+            checkPoint = transform.position;
+            Destroy(collision.gameObject);
         }
     }
 }
