@@ -63,6 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
+    <None Include="Assets\Skybox\Skybox Cubemap Extended.shader" />
     <Reference Include="Unity.XR.Management">
       <HintPath>C:/Users/alexa/Documents/GitHub/GameJam2020/GameJam2020/Library/ScriptAssemblies/Unity.XR.Management.dll</HintPath>
     </Reference>

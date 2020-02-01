@@ -69,7 +69,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Physics.Raycast(transform.position, Vector3.down, distanceToGround + 0.1f))
         {
-            if (stage2.activeSelf)
+            if (stage2.activeSelf && playerRigidbody.velocity.y < 0)
             {
                 stage2.GetComponentInChildren<Animator>().SetBool("Jump", false);
                 stage2.GetComponentInChildren<Animator>().SetBool("Land", true);
