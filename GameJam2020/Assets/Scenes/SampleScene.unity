@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -667,7 +667,7 @@ GameObject:
   - component: {fileID: 245508777}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1423,6 +1423,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1143607620}
     m_Modifications:
+    - target: {fileID: -927199367670048503, guid: a31995affd7072c48976865554005086,
+        type: 3}
+      propertyPath: m_Name
+      value: RobotHead
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: a31995affd7072c48976865554005086,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1477,11 +1482,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: a31995affd7072c48976865554005086,
-        type: 3}
-      propertyPath: m_Name
-      value: RobotHead
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a31995affd7072c48976865554005086, type: 3}
@@ -1904,6 +1904,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 724656459}
     m_Modifications:
+    - target: {fileID: -927199367670048503, guid: a31995affd7072c48976865554005086,
+        type: 3}
+      propertyPath: m_Name
+      value: RobotHead
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: a31995affd7072c48976865554005086,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1958,11 +1963,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: a31995affd7072c48976865554005086,
-        type: 3}
-      propertyPath: m_Name
-      value: RobotHead
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a31995affd7072c48976865554005086, type: 3}
@@ -2112,6 +2112,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 737132406}
     m_Modifications:
+    - target: {fileID: -927199367670048503, guid: a31995affd7072c48976865554005086,
+        type: 3}
+      propertyPath: m_Name
+      value: RobotHead
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: a31995affd7072c48976865554005086,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2166,11 +2171,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: a31995affd7072c48976865554005086,
-        type: 3}
-      propertyPath: m_Name
-      value: RobotHead
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a31995affd7072c48976865554005086, type: 3}
@@ -2444,6 +2444,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1668157308}
     m_Modifications:
+    - target: {fileID: -927199367670048503, guid: a31995affd7072c48976865554005086,
+        type: 3}
+      propertyPath: m_Name
+      value: RobotHead
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: a31995affd7072c48976865554005086,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2498,11 +2503,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: a31995affd7072c48976865554005086,
-        type: 3}
-      propertyPath: m_Name
-      value: RobotHead
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a31995affd7072c48976865554005086, type: 3}
@@ -2765,6 +2765,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 433207667}
     m_Modifications:
+    - target: {fileID: -927199367670048503, guid: a31995affd7072c48976865554005086,
+        type: 3}
+      propertyPath: m_Name
+      value: RobotHead
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: a31995affd7072c48976865554005086,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2820,11 +2825,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: a31995affd7072c48976865554005086,
-        type: 3}
-      propertyPath: m_Name
-      value: RobotHead
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a31995affd7072c48976865554005086, type: 3}
 --- !u!4 &2070330116 stripped
@@ -2833,3 +2833,77 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2070330115}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &8805589139802045960
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 8805589139370991134, guid: b38b252f2d2c2514a8b1dde0586fb62a,
+        type: 3}
+      propertyPath: m_Name
+      value: CheckPoint
+      objectReference: {fileID: 0}
+    - target: {fileID: 8805589139370991123, guid: b38b252f2d2c2514a8b1dde0586fb62a,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 7.58
+      objectReference: {fileID: 0}
+    - target: {fileID: 8805589139370991123, guid: b38b252f2d2c2514a8b1dde0586fb62a,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.221519
+      objectReference: {fileID: 0}
+    - target: {fileID: 8805589139370991123, guid: b38b252f2d2c2514a8b1dde0586fb62a,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8805589139370991123, guid: b38b252f2d2c2514a8b1dde0586fb62a,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8805589139370991123, guid: b38b252f2d2c2514a8b1dde0586fb62a,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8805589139370991123, guid: b38b252f2d2c2514a8b1dde0586fb62a,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8805589139370991123, guid: b38b252f2d2c2514a8b1dde0586fb62a,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8805589139370991123, guid: b38b252f2d2c2514a8b1dde0586fb62a,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8805589139370991123, guid: b38b252f2d2c2514a8b1dde0586fb62a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8805589139370991123, guid: b38b252f2d2c2514a8b1dde0586fb62a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8805589139370991123, guid: b38b252f2d2c2514a8b1dde0586fb62a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8805589139370991135, guid: b38b252f2d2c2514a8b1dde0586fb62a,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 245508774}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b38b252f2d2c2514a8b1dde0586fb62a, type: 3}
