@@ -116,7 +116,7 @@ MonoBehaviour:
   m_MinSize: {x: 709, y: 492}
   m_MaxSize: {x: 18004, y: 14042}
   vertical: 0
-  controlID: 12041
+  controlID: 16670
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -169,7 +169,7 @@ MonoBehaviour:
   m_MinSize: {x: 232, y: 492}
   m_MaxSize: {x: 10002, y: 14042}
   vertical: 1
-  controlID: 12016
+  controlID: 16671
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -372,9 +372,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -0.11846581, y: 0.9194009, z: -0.10814332}
+    m_Target: {x: -0.29963422, y: 1.6250448, z: 0.21788482}
     speed: 2
-    m_Value: {x: -0.11846581, y: 0.9194009, z: -0.10814332}
+    m_Value: {x: -0.29963422, y: 1.6250448, z: 0.21788482}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -396,10 +396,10 @@ MonoBehaviour:
       m_Fade:
         m_Target: 0
         speed: 2
-        m_Value: 0
+        m_Value: 1
       m_Color: {r: 0.5, g: 0.5, b: 0.5, a: 0.4}
       m_Pivot: {x: 0, y: 0, z: 0}
-      m_Size: {x: 0, y: 0}
+      m_Size: {x: 1, y: 1}
     yGrid:
       m_Fade:
         m_Target: 1
@@ -420,13 +420,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.029680321, y: 0.020087205, z: 0.000595136, w: -0.9993652}
+    m_Target: {x: 0.16128083, y: 0.011842613, z: -0.0019355818, w: 0.9868363}
     speed: 2
-    m_Value: {x: 0.029680321, y: 0.020087205, z: 0.000595136, w: -0.9993652}
+    m_Value: {x: -0.16128083, y: -0.011842613, z: 0.0019355819, w: -0.9868363}
   m_Size:
-    m_Target: 5.3208294
+    m_Target: 4.730553
     speed: 2
-    m_Value: 5.3208294
+    m_Value: 4.730553
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -544,9 +544,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
-      m_LastClickedID: 0
-      m_ExpandedIDs: 6cfbffff30330000
+      m_SelectedIDs: b2e3ffff
+      m_LastClickedID: -7246
+      m_ExpandedIDs: 5afbffff46330000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -609,20 +609,20 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scripts
+    - Assets/Animations
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/Scripts
+  - Assets/Animations
   m_LastFoldersGridSize: 16
   m_LastProjectPath: C:\Users\alexa\Documents\GitHub\GameJam2020\GameJam2020
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: a2330000
-    m_LastClickedID: 13218
-    m_ExpandedIDs: 000000009433000000ca9a3b
+    m_SelectedIDs: 3c340000
+    m_LastClickedID: 13372
+    m_ExpandedIDs: 000000003634000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -650,7 +650,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000009433000000ca9a3b
+    m_ExpandedIDs: 000000003634000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -677,7 +677,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 0
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c623000056c70000b8210100fc2101009a540000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
