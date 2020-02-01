@@ -4,8 +4,15 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    //Body parts:
+    private bool normalLeg;
+    private bool torso;
+    private bool forkArm;
+    private bool rocketLeg;
+
     private bool grounded = true;
 
+    private float distanceToGround;
     private float horizontalInput;
     private float jumpForce = 10;
 
@@ -13,6 +20,8 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
+        distanceToGround = GetComponentInChildren<Collider>().bounds.extents.y;
+
         playerRigidbody = GetComponent<Rigidbody>();
     }
 
@@ -22,10 +31,18 @@ public class PlayerMovement : MonoBehaviour
 
         Movement();
 
-        if (Input.GetKeyDown(KeyCode.Space) && grounded)
+        if (Input.GetKeyDown(KeyCode.Space) && CheckIfGrounded())
         {
             Jump();
         }
+    }
+
+    private bool CheckIfGrounded()
+    {
+        if (Physics.Raycast(transform.position, Vector3.down, distanceToGround + 0.1f))
+            return true;
+        else
+            return false;
     }
 
     private void Movement()
@@ -37,17 +54,5 @@ public class PlayerMovement : MonoBehaviour
     {
         grounded = false;
         playerRigidbody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Ground"))
-            grounded = true;
-    }
-
-    private void OnCollisionExit(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Ground"))
-            grounded = false;
     }
 }
