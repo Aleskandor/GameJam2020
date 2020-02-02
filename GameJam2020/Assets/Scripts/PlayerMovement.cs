@@ -112,6 +112,18 @@ public class PlayerMovement : MonoBehaviour
                 stage3.GetComponentInChildren<Animator>().SetBool("Land", true);
             }
 
+            if (stage4.activeSelf && rigidbody.velocity.y < 0)
+            {
+                stage4.GetComponentInChildren<Animator>().SetBool("Jump", false);
+                stage4.GetComponentInChildren<Animator>().SetBool("Land", true);
+            }
+
+            if (stage5.activeSelf && rigidbody.velocity.y < 0)
+            {
+                stage5.GetComponentInChildren<Animator>().SetBool("Jump", false);
+                stage5.GetComponentInChildren<Animator>().SetBool("Land", true);
+            }
+
             if (stage5.activeSelf)
             {
                 rocketBoost = true;
@@ -172,6 +184,44 @@ public class PlayerMovement : MonoBehaviour
         else if (stage3.activeSelf)
             stage3.GetComponentInChildren<Animator>().SetBool("Walk", false);
 
+        if (stage4.activeSelf && horizontalInput != 0)
+        {
+            stage4.GetComponentInChildren<Animator>().SetBool("Walk", true);
+
+            if (horizontalInput < 0)
+            {
+                Quaternion targetRot = Quaternion.Euler(0, -90, 0);
+                stage4.transform.rotation = Quaternion.RotateTowards(stage4.transform.rotation, targetRot, 10f);
+            }
+            else if (horizontalInput > 0)
+            {
+                Quaternion targetRot = Quaternion.Euler(0, 90, 0);
+                stage4.transform.rotation = Quaternion.RotateTowards(stage4.transform.rotation, targetRot, 10f);
+            }
+
+        }
+        else if (stage4.activeSelf)
+            stage4.GetComponentInChildren<Animator>().SetBool("Walk", false);
+
+        if (stage5.activeSelf && horizontalInput != 0)
+        {
+            stage5.GetComponentInChildren<Animator>().SetBool("Walk", true);
+
+            if (horizontalInput < 0)
+            {
+                Quaternion targetRot = Quaternion.Euler(0, -90, 0);
+                stage5.transform.rotation = Quaternion.RotateTowards(stage5.transform.rotation, targetRot, 10f);
+            }
+            else if (horizontalInput > 0)
+            {
+                Quaternion targetRot = Quaternion.Euler(0, 90, 0);
+                stage5.transform.rotation = Quaternion.RotateTowards(stage5.transform.rotation, targetRot, 10f);
+            }
+
+        }
+        else if (stage5.activeSelf)
+            stage5.GetComponentInChildren<Animator>().SetBool("Walk", false);
+
         transform.Translate(Vector3.right * horizontalInput * movementSpeed * Time.deltaTime);
     }
 
@@ -187,6 +237,18 @@ public class PlayerMovement : MonoBehaviour
         {
             stage3.GetComponentInChildren<Animator>().SetBool("Land", false);
             stage3.GetComponentInChildren<Animator>().SetBool("Jump", true);
+        }
+
+        if (stage4.activeSelf)
+        {
+            stage4.GetComponentInChildren<Animator>().SetBool("Land", false);
+            stage4.GetComponentInChildren<Animator>().SetBool("Jump", true);
+        }
+
+        if (stage5.activeSelf)
+        {
+            stage5.GetComponentInChildren<Animator>().SetBool("Land", false);
+            stage5.GetComponentInChildren<Animator>().SetBool("Jump", true);
         }
 
         grounded = false;
