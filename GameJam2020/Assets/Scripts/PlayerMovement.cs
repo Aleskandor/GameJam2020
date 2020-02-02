@@ -1,10 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
     private bool forkArm;
+    public bool forkShot;
     private bool grounded;
     private bool moveLock;
     private bool normalLeg;
@@ -14,9 +13,12 @@ public class PlayerMovement : MonoBehaviour
     private bool upBoost;
     private bool jump;
 
+    public bool forkHit;
+
     private float airSpeed;
     private float distanceToGround;
     private float downForce;
+    private float forkSpeed;
     private float horizontalInput;
     private float jumpForce;
     private float movementSpeed;
@@ -29,6 +31,8 @@ public class PlayerMovement : MonoBehaviour
     private float fallMultiplier;
     private float lowJumpMultiplier;
 
+    private GameObject fork;
+
     public GameObject stage1;
     public GameObject stage2;
     public GameObject stage3;
@@ -37,11 +41,15 @@ public class PlayerMovement : MonoBehaviour
 
     private Rigidbody rigidbody;
 
+
+    public Vector3 forkHitPosition;
     private Vector3 checkPoint;
+    private Vector3 forkStartPosition;
 
     void Start()
     {
         forkArm = false;
+        forkShot = false;
         grounded = true;
         moveLock = false;
         normalLeg = false;
@@ -51,9 +59,12 @@ public class PlayerMovement : MonoBehaviour
         upBoost = false;
         jump = false;
 
+        forkHit = false;
+
         airSpeed = 5f;
         distanceToGround = GetComponentInChildren<Collider>().bounds.extents.y;
         downForce = 0.5f;
+        forkSpeed = 20f;
         jumpForce = 5f;
         headSpeed = 7.5f;
         movementSpeed = headSpeed;
@@ -71,6 +82,12 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Q) && !forkShot && (stage4.activeSelf || stage5.activeSelf))
+            ShootFork();
+
+        if (forkShot)
+             ForkUpdate();
+
         if (Input.GetKeyDown(KeyCode.R))
         {
             Respawn();
@@ -112,6 +129,11 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    private void LateUpdate()
+    {
+        if (forkHit)
+            fork.transform.position = forkHitPosition;
+    }
     private bool CheckIfGrounded()
     {
         if (Physics.Raycast(transform.position, Vector3.down, distanceToGround + 0.01f))
@@ -159,6 +181,37 @@ public class PlayerMovement : MonoBehaviour
 
             movementSpeed = airSpeed;
             return false;
+        }
+    }
+
+    private void ForkUpdate()
+    {
+        if (Vector3.Distance(fork.transform.position, transform.position) < 30)
+        {
+            if (!forkHit)
+                fork.transform.Translate(transform.forward * forkSpeed * Time.deltaTime);
+            else
+                MoveToFork();
+        }
+        else
+        {
+            forkShot = false;
+            moveLock = false;
+            forkHit = false;
+            fork.transform.localPosition = forkStartPosition; 
+        }
+    }
+
+    private void MoveToFork()
+    {
+        if (Vector3.Distance(transform.position, forkHitPosition) > 1)
+            transform.position = Vector3.MoveTowards(transform.position, forkHitPosition, 1.5f);
+        else
+        {
+            forkShot = false;
+            moveLock = false;
+            forkHit = false;
+            fork.transform.localPosition = forkStartPosition;
         }
     }
 
@@ -285,6 +338,14 @@ public class PlayerMovement : MonoBehaviour
         rocketBoost = false;
     }
 
+    private void ShootFork()
+    {
+        forkShot = true;
+        fork = GameObject.Find("Fork");
+        moveLock = true;
+        forkStartPosition = fork.transform.localPosition;
+    }
+
     public void Respawn()
     {
         transform.position = checkPoint;
@@ -329,6 +390,7 @@ public class PlayerMovement : MonoBehaviour
             Destroy(collision.gameObject);
             stage2.SetActive(false);
             stage3.SetActive(true);
+            Camera.main.transform.position -= new Vector3(0, 0, 5);
             torso = true;
             distanceToGround = GetComponentInChildren<Collider>().bounds.extents.y;
         }
