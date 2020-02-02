@@ -69,7 +69,7 @@ GameObject:
   - component: {fileID: 6488765672724667432}
   m_Layer: 0
   m_Name: Stage4
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -115,7 +115,7 @@ GameObject:
   - component: {fileID: 6488765673349874192}
   m_Layer: 0
   m_Name: Stage5
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -244,7 +244,7 @@ GameObject:
   - component: {fileID: 6488765673655839778}
   m_Layer: 0
   m_Name: Stage3
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -289,7 +289,7 @@ GameObject:
   - component: {fileID: 6488765673670439449}
   m_Layer: 0
   m_Name: Stage2
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -334,7 +334,7 @@ GameObject:
   - component: {fileID: 6488765673961728545}
   m_Layer: 0
   m_Name: Stage1
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -380,7 +380,7 @@ GameObject:
   - component: {fileID: 6488765674247993852}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -445,11 +445,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6488765673349874193}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: fe6034e93fe39b94097c10fcba92e955,
-        type: 3}
-      propertyPath: m_Name
-      value: HeadLegTorsoRocketModel
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: fe6034e93fe39b94097c10fcba92e955,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -505,6 +500,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: fe6034e93fe39b94097c10fcba92e955,
+        type: 3}
+      propertyPath: m_Name
+      value: HeadLegTorsoRocketModel
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fe6034e93fe39b94097c10fcba92e955, type: 3}
 --- !u!4 &1421525997726800563 stripped
@@ -520,11 +520,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6488765673655839779}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: a8cb1e2f20edf584aa1a8d896df9aab0,
-        type: 3}
-      propertyPath: m_Name
-      value: HeadLegTorsoModel
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: a8cb1e2f20edf584aa1a8d896df9aab0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -579,6 +574,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: a8cb1e2f20edf584aa1a8d896df9aab0,
+        type: 3}
+      propertyPath: m_Name
+      value: HeadLegTorsoModel
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a8cb1e2f20edf584aa1a8d896df9aab0, type: 3}
@@ -601,11 +601,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6488765673349874193}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: 59de120ce830129458c552e019e215de,
-        type: 3}
-      propertyPath: m_Name
-      value: Fork
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 59de120ce830129458c552e019e215de,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -660,6 +655,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 59de120ce830129458c552e019e215de,
+        type: 3}
+      propertyPath: m_Name
+      value: Fork
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 59de120ce830129458c552e019e215de, type: 3}
@@ -676,11 +676,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6488765672724667433}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: a8cb1e2f20edf584aa1a8d896df9aab0,
-        type: 3}
-      propertyPath: m_Name
-      value: HeadLegTorsoModel
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: a8cb1e2f20edf584aa1a8d896df9aab0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -736,6 +731,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: a8cb1e2f20edf584aa1a8d896df9aab0,
+        type: 3}
+      propertyPath: m_Name
+      value: HeadLegTorsoModel
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a8cb1e2f20edf584aa1a8d896df9aab0, type: 3}
 --- !u!4 &1421525998430604070 stripped
@@ -751,11 +751,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6488765672724667433}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: 59de120ce830129458c552e019e215de,
-        type: 3}
-      propertyPath: m_Name
-      value: Fork
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 59de120ce830129458c552e019e215de,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -811,6 +806,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -90
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 59de120ce830129458c552e019e215de,
+        type: 3}
+      propertyPath: m_Name
+      value: Fork
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 59de120ce830129458c552e019e215de, type: 3}
 --- !u!4 &1421525998478953403 stripped
@@ -826,11 +826,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6488765673670439454}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: bbbd17ecd1e2e6c4c80147d279cdee08,
-        type: 3}
-      propertyPath: m_Name
-      value: HeadLegModel
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: bbbd17ecd1e2e6c4c80147d279cdee08,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -885,6 +880,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: bbbd17ecd1e2e6c4c80147d279cdee08,
+        type: 3}
+      propertyPath: m_Name
+      value: HeadLegModel
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bbbd17ecd1e2e6c4c80147d279cdee08, type: 3}

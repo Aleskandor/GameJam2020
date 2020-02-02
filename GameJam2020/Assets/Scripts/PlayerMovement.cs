@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
     private bool forkArm;
     private bool grounded;
+    private bool moveLock;
     private bool normalLeg;
     private bool rocketBoost;
     private bool rocketLeg;
@@ -37,6 +38,7 @@ public class PlayerMovement : MonoBehaviour
     {
         forkArm = false;
         grounded = true;
+        moveLock = false;
         normalLeg = false;
         rocketBoost = false;
         rocketLeg = false;
@@ -67,7 +69,8 @@ public class PlayerMovement : MonoBehaviour
 
         horizontalInput = Input.GetAxisRaw("Horizontal");
 
-        Movement();
+        if (!moveLock)
+            Movement();
 
         if (CheckIfGrounded() && Input.GetKeyDown(KeyCode.Space) && normalLeg)
             Jump();
@@ -199,10 +202,18 @@ public class PlayerMovement : MonoBehaviour
         rocketBoost = false;
     }
 
-    private void Respawn()
+    public void Respawn()
     {
         transform.position = checkPoint;
         rigidbody.velocity = Vector3.zero;
+    }
+
+    public void Freeze()
+    {
+        if (moveLock)
+            moveLock = false;
+        else
+            moveLock = true;
     }
 
     private void UpdateHeadMoveAnimationController()
