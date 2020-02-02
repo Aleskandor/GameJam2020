@@ -26,7 +26,7 @@ ModelImporter:
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
     importConstraints: 0
-    animationCompression: 1
+    animationCompression: 3
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
@@ -62,7 +62,7 @@ ModelImporter:
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 1
+      additiveReferencePoseFrame: 0
     isReadable: 0
   meshes:
     lODScreenPercentages: []
@@ -104,7 +104,92 @@ ModelImporter:
   humanDescription:
     serializedVersion: 3
     human: []
-    skeleton: []
+    skeleton:
+    - name: RobotHeadLegWalk(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: pCylinder5
+      parentName: RobotHeadLegWalk(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Leg_IK
+      parentName: RobotHeadLegWalk(Clone)
+      position: {x: 6.0649057e-16, y: 0.7127955, z: 0.6107889}
+      rotation: {x: -0.49898684, y: -0.50101113, z: 0.49898684, w: 0.50101113}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Head_IK
+      parentName: RobotHeadLegWalk(Clone)
+      position: {x: -3.4363814e-16, y: 4.2735095, z: -0.42330378}
+      rotation: {x: -0.4979013, y: 0.50209, z: -0.4979013, w: 0.50209}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Foot_Ctrl
+      parentName: RobotHeadLegWalk(Clone)
+      position: {x: 1.1055926e-15, y: 0.90069896, z: 1.3313249}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Leg_Ctrl
+      parentName: RobotHeadLegWalk(Clone)
+      position: {x: 9.286307e-16, y: 0.7127895, z: 0.6107889}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Top_Ctrl
+      parentName: RobotHeadLegWalk(Clone)
+      position: {x: -0.007914863, y: 0.14765303, z: -0.3201365}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: head_Ctrl
+      parentName: Top_Ctrl
+      position: {x: 0.007914863, y: 4.1258564, z: -0.103059724}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: jaw_Ctrl
+      parentName: head_Ctrl
+      position: {x: -0.007914863, y: -0.40505713, z: -0.0004511933}
+      rotation: {x: 0.009414984, y: -0, z: -0, w: 0.9999557}
+      scale: {x: 1, y: 1, z: 1}
+    - name: foot_IK
+      parentName: RobotHeadLegWalk(Clone)
+      position: {x: 1.1055926e-15, y: 0.90069896, z: 1.135768}
+      rotation: {x: 0.1591693, y: 0.6889595, z: 0.1591693, w: 0.6889595}
+      scale: {x: 1, y: 1, z: 1}
+    - name: root_J
+      parentName: RobotHeadLegWalk(Clone)
+      position: {x: -0, y: 3.4997327, z: -0.32627526}
+      rotation: {x: -0.4973047, y: 0.50268084, z: -0.4973047, w: 0.50268084}
+      scale: {x: 1, y: 1, z: 1}
+    - name: head_j
+      parentName: root_J
+      position: {x: -0.7738043, y: 4.2914044e-17, z: -2.5772862e-16}
+      rotation: {x: 0.981017, y: -0.1939221, z: -0.000000029802322, w: 0.0000004172325}
+      scale: {x: 1, y: 1, z: 1}
+    - name: jaw_j
+      parentName: head_j
+      position: {x: -0.4068373, y: 0.0025902234, z: -7.592222e-17}
+      rotation: {x: 0.4672069, y: 0.53077084, z: -0.46720695, w: 0.5307709}
+      scale: {x: 1, y: 0.99999976, z: 0.99999976}
+    - name: thigh_j
+      parentName: root_J
+      position: {x: 0.12784661, y: 0.0012290146, z: -5.91263e-19}
+      rotation: {x: -0, y: -0, z: 0.9999529, w: 0.009704918}
+      scale: {x: 1, y: 1.0000001, z: 0.9999999}
+    - name: knee_j
+      parentName: thigh_j
+      position: {x: -1.3374273, y: -5.4956044e-17, z: 2.969685e-16}
+      rotation: {x: -0.99997985, y: -0.006353184, z: -0.000000029511689, w: 0.00000003009015}
+      scale: {x: 1.0000002, y: 1, z: 1}
+    - name: foot_j
+      parentName: knee_j
+      position: {x: -1.4300209, y: -8.001829e-15, z: -3.134683e-16}
+      rotation: {x: 0.84864837, y: 0.52895755, z: 0.000000009389861, w: 0.00000004108756}
+      scale: {x: 1, y: 0.9999998, z: 0.99999976}
+    - name: toe_j
+      parentName: foot_j
+      position: {x: -0.7301444, y: -3.2973624e-16, z: 2.981591e-16}
+      rotation: {x: -0.16123943, y: -0.68847793, z: -0.16123943, w: 0.68847793}
+      scale: {x: 1, y: 1.0000001, z: 0.9999998}
     armTwist: 0.5
     foreArmTwist: 0.5
     upperLegTwist: 0.5
@@ -115,13 +200,13 @@ ModelImporter:
     globalScale: 33
     rootMotionBoneName: 
     hasTranslationDoF: 0
-    hasExtraRoot: 0
+    hasExtraRoot: 1
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
-  avatarSetup: 0
+  avatarSetup: 1
   additionalBone: 0
   userData: 
   assetBundleName: 

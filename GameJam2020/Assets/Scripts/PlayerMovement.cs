@@ -12,7 +12,7 @@ public class PlayerMovement : MonoBehaviour
     private bool torso;
     private bool upBoost;
     private bool jump;
-
+    private bool inAir;
     public bool forkHit;
 
     private float airSpeed;
@@ -58,7 +58,7 @@ public class PlayerMovement : MonoBehaviour
         torso = false;
         upBoost = false;
         jump = false;
-
+        inAir = false;
         forkHit = false;
 
         airSpeed = 5f;
@@ -100,9 +100,12 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space) && jumpCharges > 0 && !stage1.activeSelf)
         {
+            GetComponentInChildren<Transform>().GetComponentInChildren<Animator>().SetBool("Jump", true);
+            GetComponentInChildren<Transform>().GetComponentInChildren<Animator>().SetBool("Land", false);
             rigidbody.velocity = Vector3.up * jumpVelocity;
             jumpCharges--;
             jump = true;
+            inAir = true;
         }
 
         if (rigidbody.velocity.y < 0)
@@ -115,9 +118,11 @@ public class PlayerMovement : MonoBehaviour
             rigidbody.velocity += Vector3.up * Physics.gravity.y * (lowJumpMultiplier - 1f) * Time.deltaTime;
         }
 
-        if (jump && CheckIfGrounded() && !stage1.activeSelf)
+        if(rigidbody.velocity.y < 0 && inAir && CheckIfGrounded())
         {
-            GetComponentInChildren<Transform>().GetComponentInChildren<Animator>().SetBool("Jump", true);
+            GetComponentInChildren<Transform>().GetComponentInChildren<Animator>().SetBool("Jump", false);
+            GetComponentInChildren<Transform>().GetComponentInChildren<Animator>().SetBool("Land", true);
+            inAir = false;
         }
 
         if (CheckIfGrounded() && !jump)
@@ -138,50 +143,9 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Physics.Raycast(transform.position, Vector3.down, distanceToGround + 0.01f))
         {
-            if (stage1.activeSelf)
-                movementSpeed = headSpeed;
-            else
-                movementSpeed = legSpeed;
-
-            if (stage2.activeSelf && rigidbody.velocity.y < 0)
-            {
-                stage2.GetComponentInChildren<Animator>().SetBool("Jump", false);
-                stage2.GetComponentInChildren<Animator>().SetBool("Land", true);
-            }
-
-            if (stage3.activeSelf && rigidbody.velocity.y < 0)
-            {
-                stage3.GetComponentInChildren<Animator>().SetBool("Jump", false);
-                stage3.GetComponentInChildren<Animator>().SetBool("Land", true);
-            }
-
-            if (stage4.activeSelf && rigidbody.velocity.y < 0)
-            {
-                stage4.GetComponentInChildren<Animator>().SetBool("Jump", false);
-                stage4.GetComponentInChildren<Animator>().SetBool("Land", true);
-            }
-
-            if (stage5.activeSelf && rigidbody.velocity.y < 0)
-            {
-                stage5.GetComponentInChildren<Animator>().SetBool("Jump", false);
-                stage5.GetComponentInChildren<Animator>().SetBool("Land", true);
-            }
-
-            if (stage5.activeSelf)
-            {
-                rocketBoost = true;
-            }
-
             return true;
         }
-        else
-        {
-            if (rigidbody.velocity.y < 0)
-                rigidbody.AddForce(Vector3.down * downForce, ForceMode.Impulse);
-
-            movementSpeed = airSpeed;
-            return false;
-        }
+        return false;
     }
 
     private void ForkUpdate()
