@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
     private bool rocketLeg;
     private bool torso;
     private bool upBoost;
+    private bool jump;
 
     private float airSpeed;
     private float distanceToGround;
@@ -23,6 +24,10 @@ public class PlayerMovement : MonoBehaviour
     private float headSpeed;
     private float legSpeed;
     private float upForce;
+    private float jumpVelocity;
+    private float jumpCharges;
+    private float fallMultiplier;
+    private float lowJumpMultiplier;
 
     public GameObject stage1;
     public GameObject stage2;
@@ -44,6 +49,7 @@ public class PlayerMovement : MonoBehaviour
         rocketLeg = false;
         torso = false;
         upBoost = false;
+        jump = false;
 
         airSpeed = 5f;
         distanceToGround = GetComponentInChildren<Collider>().bounds.extents.y;
@@ -54,6 +60,9 @@ public class PlayerMovement : MonoBehaviour
         originalUpForce = 0.3f;
         legSpeed = 10f;
         upForce = 0.3f;
+        jumpVelocity = 20f;
+        fallMultiplier = 2.5f;
+        lowJumpMultiplier = 2f;
 
         rigidbody = GetComponent<Rigidbody>();
 
@@ -72,23 +81,35 @@ public class PlayerMovement : MonoBehaviour
         if (!moveLock)
             Movement();
 
-        if (CheckIfGrounded() && Input.GetKeyDown(KeyCode.Space) && normalLeg)
-            Jump();
-        if (Input.GetKey(KeyCode.Space) && !CheckIfGrounded() && normalLeg && upBoost)
+        if (Input.GetKeyDown(KeyCode.Space) && jumpCharges > 0 && !stage1.activeSelf)
         {
-            rigidbody.AddForce(Vector3.up * upForce * 1.7f, ForceMode.Impulse);
-            upForce -= Time.deltaTime * 5f;
-
-            if (upForce <= 0)
-            {
-                upForce = originalUpForce;
-                upBoost = false;
-            }
+            rigidbody.velocity = Vector3.up * jumpVelocity;
+            jumpCharges--;
+            jump = true;
         }
-        else if (!Input.GetKey(KeyCode.Space) && !CheckIfGrounded() && normalLeg)
-            rigidbody.AddForce(Vector3.down * downForce, ForceMode.Impulse);
-        else if (Input.GetKeyDown(KeyCode.Space) && rocketLeg && rocketBoost && !CheckIfGrounded())
-            DoubleJump();
+
+        if (rigidbody.velocity.y < 0)
+        {
+            rigidbody.velocity += Vector3.up * Physics.gravity.y * (fallMultiplier - 1f) * Time.deltaTime;
+            jump = false;
+        }
+        else if (rigidbody.velocity.y > 0 && !Input.GetKey(KeyCode.Space))
+        {
+            rigidbody.velocity += Vector3.up * Physics.gravity.y * (lowJumpMultiplier - 1f) * Time.deltaTime;
+        }
+
+        if (jump && CheckIfGrounded() && !stage1.activeSelf)
+        {
+            GetComponentInChildren<Transform>().GetComponentInChildren<Animator>().SetBool("Jump", true);
+        }
+
+        if (CheckIfGrounded() && !jump)
+        {
+            if (!stage5.activeSelf)
+                jumpCharges = 1;
+            else if (stage5.activeSelf)
+                jumpCharges = 2;
+        }
     }
 
     private bool CheckIfGrounded()
